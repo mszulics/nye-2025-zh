@@ -26,7 +26,22 @@
  */
 module.exports.createHttpHeaders = (input) => {
     // TODO: your code here
-    return {};
+    const headers = {};
+
+  if (!Array.isArray(input)) return headers;
+
+  input.forEach(([name, ...values]) => {
+    const key = name.toLowerCase();
+    const value = values.join(', ');
+
+    if (headers[key]) {
+      headers[key] += `, ${value}`;
+    } else {
+      headers[key] = value;
+    }
+  });
+
+  return headers;
 };
 
 /**
@@ -50,5 +65,16 @@ module.exports.createHttpHeaders = (input) => {
  */
 module.exports.getItems = (items, params) => {
     // TODO: your code here
-    return [];
+    if (!Array.isArray(items) || typeof params !== 'object') return [];
+
+    const { page = 1, pageSize = 10 } = params;
+    const start = (page - 1) * pageSize;
+    const end = start + pageSize;
+
+    return items.slice(start, end).map(item => ({
+        id: item.id,
+        title: {
+            main: item.displayTitle
+        }
+    }));
 }

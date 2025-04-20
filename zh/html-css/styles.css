@@ -2,14 +2,49 @@
     display: none;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 2rem;
+}
+
 .container {
-    display: flex;
-    flex-flow: column nowrap;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 16px;
+    max-width: 800px;
+    margin: auto;
 }
 
 .search-result-item {
-    max-width: 768px;
+    display: flex;
+    align-items: flex-start;
+    background-color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    gap: 1rem;
+}
+
+.search-result-item img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.result-content {
+    flex: 1;
+}
+
+.result-title {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.result-description {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.4;
 }
